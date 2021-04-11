@@ -1,4 +1,4 @@
-program tp1ej5;
+program tp1ej5y6;
 type
     celular = record
         codigo:integer;
@@ -127,21 +127,21 @@ end;
 
 procedure modificarStock(var archivo:archivoCelulares);
 var cel:celular;
-codigo:integer;
+nombre:string;
 encontro:boolean;
 begin
   reset(archivo);
   encontro := false;
-  Write('Ingrese el codigo del celular que desea modificar: ');ReadLn(codigo);
+  Write('Ingrese el nombre del celular que desea modificar: ');ReadLn(nombre);
   while (not eof(archivo) and not encontro) do begin
     read(archivo, cel);
-    if(cel.codigo = codigo) then encontro := true;
+    if(cel.nombre = nombre) then encontro := true;
   end;
   if encontro then begin
     write('Ingrese el nuevo stock: '); ReadLn(cel.stock_actual);
     seek(archivo, FilePos(archivo) - 1);
     write(archivo, cel);
-  end else Writeln('No se encontro ningun celular con ese codigo');
+  end else Writeln('No se encontro ningun celular con ese nombre');
   close(archivo);
 end;
 
@@ -181,7 +181,7 @@ while(opcion <> 0) do begin
   writeln('3. Listar en pantalla los celulares del archivo cuya descripción contenga una cadena de caracteres proporcionada por el usuario.');
   writeln('4. Exportar el archivo creado en el inciso a) a un archivo de texto denominado “celulares.txt” con todos los celulares del mismo.');
   writeln('5. Añadir uno o más celulares al final del archivo con sus datos ingresados por teclado.');
-  writeln('6. Modificar stock de un celular buscado por codigo.');
+  writeln('6. Modificar stock de un celular buscado por nombre.');
   writeln('7. Exportar celulares sin stock a SinStock.txt.');
   Readln(opcion);
   case opcion of

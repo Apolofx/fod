@@ -42,8 +42,8 @@ var e:empleado;
 begin
   reset(archivo);
   leerEmpleado(e);
+  Seek(archivo, FileSize(archivo));
   while(e.apellido <> corte) do begin
-    Seek(archivo, FileSize(archivo));
     write(archivo, e);
     leerEmpleado(e);
   end;
@@ -73,10 +73,8 @@ end;
 
 procedure exportarATexto(var archivo_binario:archivoEmpleados;var archivo_txt:Text);
 var e:empleado;
-nombre_fisico_txt:string;
 begin
-  writeln('Nombre del archivo de texto: ');readln(nombre_fisico_txt);
-  Assign(archivo_txt, nombre_fisico_txt);
+  Assign(archivo_txt, 'todos_empleados.txt');
   reset(archivo_binario);
   Rewrite(archivo_txt);
   while(not eof(archivo_binario)) do begin
