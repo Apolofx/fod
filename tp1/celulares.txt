@@ -1,0 +1,12 @@
+1 123.00  alcatel
+15 20  asdlasd
+b45
+2 123.00  apple
+0 1  asdlasd
+c45
+3 123.00  motorola
+13 20  asdlasd
+g78
+4 123.00  nokia
+17 1  asdlasd
+t567
